@@ -34,6 +34,7 @@ const checkFavorite = (sid) => {
 
 let nameholder = author?.substr(0,1).toUpperCase()
 const propsValid = (author) => author !== undefined
+
   return (
     <>
     {

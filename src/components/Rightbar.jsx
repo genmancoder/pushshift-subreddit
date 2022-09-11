@@ -13,12 +13,13 @@ import ExpandMoreIcon  from '@mui/icons-material/ExpandMore'
 
 import FavoriteContext from '../FavoriteContext'
 import {useContext} from 'react'
-import ContentLoader, { Facebook } from 'react-content-loader'
+
+import { Facebook } from 'react-content-loader'
 
 const Rightbar = () => {
   
   const {favorites} = useContext(FavoriteContext)
-  console.log('fav',favorites)
+  
 
   return (
     <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
