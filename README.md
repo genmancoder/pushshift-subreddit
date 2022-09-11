@@ -8,4 +8,6 @@ The purpose of this project is to showcase how to make use of the api service to
 
 Browse subreddit submissions and add them to your favorite submissions. You can follow the link to the full text of the post.
 
+## Roadmap
 
+Add switching to dark mode.
