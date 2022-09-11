@@ -1,38 +1,36 @@
 import { Box, Typography,Button } from '@mui/material'
-import {useState, useEffect} from 'react'
-
-import Loader from "react-js-loader";
+// import {useState} from 'react'
 
 const Service = () => {
 
-    const [data, setData] = useState(null)
-    const [loading,setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    // const [data, setData] = useState(null)
+    // const [setLoading] = useState(true)
+    // const [setError] = useState(null)
 
-    useEffect(() => {
-        const getData = async () => {
-          try {
-            const response = await fetch(
-              `https://jsonplaceholder.typicode.com/posts?_limit=10`
-            );
-            if (!response.ok) {
-              throw new Error(
-                `This is an HTTP error: The status is ${response.status}`
-              );
-            }
-            let actualData = await response.json();
-            setData(actualData);
-            console.log(data)
-            setError(null);
-          } catch(err) {
-            setError(err.message);
-            setData(null);
-          } finally {
-            setLoading(false);
-          }  
-        }
-        getData()
-      }, [])
+    // useEffect(() => {
+    //     const getData = async () => {
+    //       try {
+    //         const response = await fetch(
+    //           `https://jsonplaceholder.typicode.com/posts?_limit=10`
+    //         );
+    //         if (!response.ok) {
+    //           throw new Error(
+    //             `This is an HTTP error: The status is ${response.status}`
+    //           );
+    //         }
+    //         let actualData = await response.json();
+    //         setData(actualData);
+    //         console.log(data)
+    //         setError(null);
+    //       } catch(err) {
+    //         setError(err.message);
+    //         setData(null);
+    //       } finally {
+    //         setLoading(false);
+    //       }  
+    //     }
+    //     getData()
+    //   }, [data])
 
     const handleClick = () => {
         console.log('Clicked');

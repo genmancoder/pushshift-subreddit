@@ -1,4 +1,4 @@
-import { Avatar,
+import {
   Link, 
   Box, 
   Typography,

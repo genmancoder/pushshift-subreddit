@@ -3,7 +3,6 @@ import React from 'react'
 
 import FavoriteContext from '../FavoriteContext'
 import {useContext} from 'react'
-import Submissions from './Submissions'
 import FavoriteSubs from './FavoriteSubs'
 
 const Favorite = () => {

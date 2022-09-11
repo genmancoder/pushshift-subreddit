@@ -9,9 +9,9 @@ import Sidebar from './components/Sidebar';
 import Feed from './components/Feed'
 
 
-import { BrowserRouter,Route,Switch, Routes,Link } from 'react-router-dom';
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import Service from './components/Service';
-import GlobalSettings from './components/GlobalSettings';
+// import GlobalSettings from './components/GlobalSettings';
 import Favorite from './components/Favorite';
 
 import {FavoriteProvider} from './FavoriteContext'

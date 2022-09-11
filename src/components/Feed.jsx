@@ -1,9 +1,9 @@
 
 import {useState, useEffect} from 'react'
-import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox, IconButton, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 
-import Loader from "react-js-loader";
-import ContentLoader, { Facebook } from 'react-content-loader'
+
+import { Facebook } from 'react-content-loader'
 
 import Submissions from './Submissions';
 
@@ -13,7 +13,7 @@ const Feed = () => {
 
     const [data, setData] = useState(null)
     const [loading,setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [setError] = useState(null)
 
     useEffect(() => {
       const getData = async () => {
@@ -27,8 +27,7 @@ const Feed = () => {
             );
           }
           let actualData = await response.json();
-          setData(actualData);
-          // console.log('data ' ,data)
+          setData(actualData);          
           setError(null);
         } catch(err) {
           setError(err.message);
@@ -43,7 +42,7 @@ const Feed = () => {
   return (
     <Box flex={4}>
         {
-          loading == true ? <Box margin={5}><Facebook /></Box> :
+          loading === true ? <Box margin={5}><Facebook /></Box> :
           data?.map((item) => (
             <Submissions key={item.id} id={item.id} sid={item.subid} title={item.title} author={item.name} content={item.content} votes={item.upvotes} link={item.link}/>
           ))

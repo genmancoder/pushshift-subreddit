@@ -1,5 +1,5 @@
 
-import { Mail, Notifications, Pets } from "@mui/icons-material";
+import { Mail} from "@mui/icons-material";
 import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
