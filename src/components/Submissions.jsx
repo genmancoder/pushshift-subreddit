@@ -3,14 +3,46 @@ import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Checkbox
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+
 import { red } from '@mui/material/colors';
-const Submissions = () => {
+
+import ContentLoader, { Facebook } from 'react-content-loader'
+
+import FavoriteContext from '../FavoriteContext'
+import {useContext} from 'react'
+
+
+const Submissions = ({id,sid,author,title,content,link}) => {
+
+const {favorites, addToFavorite} = useContext(FavoriteContext)
+
+const checkFavorite = (sid) => {
+
+  favorites.forEach((fav) => {
+    console.log('fav id => ' + fav.id, ' clicked ' + sid)
+    if(fav.id === id){
+      return 'checked'
+    }
+  })
+
+  return ''
+}
+
+
+
+
+let nameholder = author?.substr(0,1).toUpperCase()
+const propsValid = (author) => author !== undefined
   return (
-    <Card   sx={{ margin: 5 }}>
+    <>
+    {
+      propsValid == false ? <Facebook/> :
+      <Card   sx={{ margin: 5 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            {nameholder}
           </Avatar>
         }
         action={
@@ -18,25 +50,25 @@ const Submissions = () => {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={title}
+        subheader={`by ${author}`}
       />
-      <CardMedia
+      {/* <CardMedia
         component="img"
         height="20%"
         image="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         alt="Paella dish"
-      />
+      /> */}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+          {content}
+         
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" onClick={()=> addToFavorite(id,title,content,link)}>
           <Checkbox
+            
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite sx={{ color: "red" }} />}
           />
@@ -44,10 +76,15 @@ const Submissions = () => {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>        
-        
+        <IconButton aria-label="open" LinkComponent='a' target='_blank' href={link}>
+          <OpenInNewIcon />
+        </IconButton>  
       </CardActions>
       
     </Card>
+    
+    }
+    </>
   )
 }
 

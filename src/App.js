@@ -14,6 +14,7 @@ import Service from './components/Service';
 import GlobalSettings from './components/GlobalSettings';
 import Favorite from './components/Favorite';
 
+import {FavoriteProvider} from './FavoriteContext'
 
 // const useStyles = makeStyles((theme) => ({
 //   button:{
@@ -26,6 +27,7 @@ function App() {
   // const classes = useStyles();
   return (
     <BrowserRouter>
+      <FavoriteProvider>
       <Box>
           <NavBar />
           <Stack direction='row' spacing={2} justifyContent='space-between'>
@@ -38,6 +40,7 @@ function App() {
             <Rightbar/>
           </Stack>
       </Box>
+      </FavoriteProvider>
     </BrowserRouter> 
   );
 }

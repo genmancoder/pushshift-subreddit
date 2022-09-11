@@ -1,52 +1,58 @@
 import { Avatar,
-  AvatarGroup, 
+  Link, 
   Box, 
   Typography,
   ImageList,
   ImageListItem, 
-  Divider
+  Accordion,
+  AccordionSummary,
+  AccordionDetails
 } from '@mui/material'
+
+import ExpandMoreIcon  from '@mui/icons-material/ExpandMore'
+
+import FavoriteContext from '../FavoriteContext'
+import {useContext} from 'react'
+import ContentLoader, { Facebook } from 'react-content-loader'
+
 const Rightbar = () => {
+  
+  const {favorites} = useContext(FavoriteContext)
+  console.log('fav',favorites)
+
   return (
     <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
         <Box position="fixed">
+        <Typography variant="h6" fontWeight={100} mt={2} mb={2}>
+          Favorite Submissions ( {favorites?.length})
+        </Typography>
+          <Box padding={3}>
+          {
+            
+            !favorites  ? <Box margin={5}><Facebook /></Box> :
+            favorites.map((item) => (
 
-          <Typography variant="h6" fontWeight={100}>Online Friends</Typography>
-          <AvatarGroup max={7}>
-          <Avatar
-            alt="Remy Sharp"
-            src="https://material-ui.com/static/images/avatar/1.jpg"
-          />
-          <Avatar
-            alt="Travis Howard"
-            src="https://material-ui.com/static/images/avatar/2.jpg"
-          />
-          <Avatar
-            alt="Cindy Baker"
-            src="https://material-ui.com/static/images/avatar/3.jpg"
-          />
-          <Avatar alt="Agnes Walker" src="" />
-          <Avatar
-            alt="Trevor Henderson"
-            src="https://material-ui.com/static/images/avatar/6.jpg"
-          />
-          <Avatar
-            alt="Trevor Henderson"
-            src="https://material-ui.com/static/images/avatar/7.jpg"
-          />
-          <Avatar
-            alt="Trevor Henderson"
-            src="https://material-ui.com/static/images/avatar/8.jpg"
-          />
-          <Avatar
-            alt="Trevor Henderson"
-            src="https://material-ui.com/static/images/avatar/7.jpg"
-          />
-          <Avatar
-            alt="Trevor Henderson"
-            src="https://material-ui.com/static/images/avatar/8.jpg"
-          />
-        </AvatarGroup>
+              <Accordion key={item.id}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography>{item.title}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    {item.content.substr(0,50)}...
+                  </Typography>
+                  <Link target="_blank" href={item.link}>Read more...</Link>
+                </AccordionDetails>
+              </Accordion>
+
+            ))
+          }           
+        
+          </Box>
+          
         <Typography variant="h6" fontWeight={100} mt={2} mb={2}>
           Latest Photos
         </Typography>
@@ -69,11 +75,8 @@ const Rightbar = () => {
               alt=""
             />
           </ImageListItem>
-        </ImageList>
-        <Typography variant="h6" fontWeight={100} mt={2}>
-          Latest Conversations
-        </Typography>
-        {/* <Divider variant="inset" /> */}
+        </ImageList>        
+        
         </Box>
     </Box>
   )

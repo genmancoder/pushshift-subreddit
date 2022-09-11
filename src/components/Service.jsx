@@ -40,26 +40,16 @@ const Service = () => {
 
   return (    
     <Box flex={4} padding={2}>
-        <Typography variant="h6" color="text.secondary">
+        <Typography variant="h6" color="text.secondary" margin={1}> 
           Reddit API Service
         </Typography>
 
         <Button variant="contained" onClick={handleClick}>Fetch Data</Button>
 
         <div>
-        { loading && 
-            <Loader type="bubble-loop" bgColor={"gray"} title={"bubble-loop"} color={'#FFFFFF'} size={100} />
-        }
-        {
-            data?.length > 0 && (
-                <ul>
-                    {data.map(item => (
-                        <li key={item.id}>test</li>
-                    ))}
-                </ul>    
-            )
-            
-        }
+            <Typography variant='body1' padding={6}>
+                Reddit pushshift api service has been implemented using NodeJS.
+            </Typography>
         </div>
     </Box>
   )
