@@ -10,4 +10,9 @@ Browse subreddit submissions and add them to your favorite submissions. You can 
 
 ## Roadmap
 
-Add switching to dark mode.
+ - Add switching to dark mode.
+ - Improve UI design
+ - Add searching
+ - Pull image from the api.
+ - Upload the db online.
+
